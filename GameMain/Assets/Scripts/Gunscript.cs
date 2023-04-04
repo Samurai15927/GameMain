@@ -5,7 +5,8 @@ using UnityEngine;
 public class Gunscript : MonoBehaviour
 {
     public GameObject player;
-    public Vector3 offset;
+    public float GunVertical;
+    public float GunDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +16,14 @@ public class Gunscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1)) ;
+        if (Input.GetMouseButtonDown(1))
         {
-            transform.position = player.transform.position + offset;
-            transform.rotation = player.transform.rotation;
-            
+            Vector3 cameraForward = player.transform.forward;
+            Vector3 cameraDown = player.transform.up;
+            Vector3 newPosition = player.transform.position + cameraForward * GunDistance + cameraDown * GunVertical;
+            transform.position = newPosition;
         }
+     
 
 
 
