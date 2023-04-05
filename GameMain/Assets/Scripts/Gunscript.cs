@@ -7,6 +7,7 @@ public class Gunscript : MonoBehaviour
     public GameObject player;
     public float GunVertical;
     public float GunDistance;
+    public float GunRotationX;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,12 @@ public class Gunscript : MonoBehaviour
             Vector3 cameraDown = player.transform.up;
             Vector3 newPosition = player.transform.position + cameraForward * GunDistance + cameraDown * GunVertical;
             transform.position = newPosition;
+
+            Vector3 newRotation = new Vector3(GunRotationX, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(newRotation);
+
         }
+
      
 
 
