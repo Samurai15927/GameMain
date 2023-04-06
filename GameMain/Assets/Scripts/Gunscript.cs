@@ -16,12 +16,9 @@ public class Gunscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+       
         {
-            Vector3 cameraForward = player.transform.forward;
-            Vector3 cameraDown = player.transform.up;
-            Vector3 newPosition = player.transform.position + cameraForward * GunDistance + cameraDown * GunVertical;
-            transform.position = newPosition;
+           
         }
      
 
