@@ -10,15 +10,26 @@ public class ZombieMovement : MonoBehaviour
     public GameObject zombie;
     public float distance;
     private Animator animator;
+    private PlayerController pc;
+
+    private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
+        
         animator = GetComponent<Animator>();
-        player = GameObject.Find("Main Camera");
+        player = GameObject.Find("Player");
+        pc = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        zombieAttack();
+  
+    }
+
+    void zombieAttack()
     {
         distance = Vector3.Distance(player.transform.position, zombie.transform.position);
         if (distance < 1.5)
@@ -28,6 +39,12 @@ public class ZombieMovement : MonoBehaviour
             Vector3 Rotation = transform.eulerAngles;
             Rotation.x = 0f;
             transform.eulerAngles = Rotation;
+
+            if (!isAttacking)
+            {
+                StartCoroutine(Damage());
+            }
+
         }
         else
         {
@@ -38,8 +55,17 @@ public class ZombieMovement : MonoBehaviour
             Rotation.x = 0f;
             transform.eulerAngles = Rotation;
             transform.Translate(new Vector3(0, 0, 1) * Time.deltaTime * zombieSpeed);
-            
+
         }
-       
     }
+
+    IEnumerator Damage()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(1.5f);
+        pc.takeDamage();
+        Debug.Log(pc.health);
+        isAttacking = false;
+    }
+
 }

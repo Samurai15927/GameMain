@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float sensitivity; // Sensitivity of the player rotation
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
+    public int health = 3;
 
     // Private variables
     private Rigidbody playerRb; // Rigidbody component of the player object
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
             // Set isGrounded to false since the player is no longer touching the ground
             isGrounded = false;
         }
+       
     }
 
     // OnCollisionEnter is called when the player object collides with another object
@@ -59,4 +61,10 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
+
+    public void takeDamage()
+    {
+        health--;
+    }
+
 }
