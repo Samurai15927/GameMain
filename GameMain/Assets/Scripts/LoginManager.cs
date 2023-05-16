@@ -8,9 +8,8 @@ public class LoginManager : MonoBehaviour
 {
     public InputField username;
     public Button loginButton;
-    private int charCount;
     public TMP_Text errorMessage;
-    private int numCount;
+   
 
 
     void Start()
@@ -25,6 +24,8 @@ public class LoginManager : MonoBehaviour
     }
     public void UsernameChecker()
     {
+        int numCount = 0;
+        int charCount = username.text.Length;
         int specCount = username.text.Length;
 
         foreach (char c in username.text)
@@ -34,7 +35,7 @@ public class LoginManager : MonoBehaviour
                 numCount++;
 
             }
-            else if (char.IsLetterOrDigit(c))
+            if (char.IsLetterOrDigit(c))
             {
                 specCount--;
             }
