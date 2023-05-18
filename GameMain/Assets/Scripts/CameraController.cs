@@ -27,12 +27,7 @@ public class CameraController : MonoBehaviour
 
 
      
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
-        {
-            // Do something with the hit object or its properties
-            Debug.Log("Hit object: " + hit.collider.gameObject.name);
-        }
+       
 
 
     }

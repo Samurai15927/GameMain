@@ -11,22 +11,15 @@ public class ZombieMovement : MonoBehaviour
     public float distance;
     private Animator animator;
     private PlayerController pc;
-    public int zombieHealth;
+    
     
 
     private bool isAttacking = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (zombie.CompareTag("ZombieRed"))
-        {
-            int zombieHealth = 4;
-        }
-        else
-        {
-            int zombieHealth = 2;
-        }
-            animator = GetComponent<Animator>();
+       
+        animator = GetComponent<Animator>();
         player = GameObject.Find("Player");
         pc = player.GetComponent<PlayerController>();
     }
@@ -35,10 +28,7 @@ public class ZombieMovement : MonoBehaviour
     void Update()
     {
         zombieAttack();
-        if (zombieHealth < 1)
-        {
-
-        }
+      
 
         
     }
