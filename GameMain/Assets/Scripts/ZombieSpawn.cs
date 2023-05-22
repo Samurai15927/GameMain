@@ -14,8 +14,7 @@ public class ZombieSpawn : MonoBehaviour
 
     void Start()
     {
-    
-        SpawnZombies();
+           SpawnZombies();
     }
         
     // Update is called once per frame
