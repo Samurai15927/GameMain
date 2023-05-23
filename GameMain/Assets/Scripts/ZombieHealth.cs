@@ -5,18 +5,17 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour
 
 {
-    public GameObject zombie;
     public int zombieHealth;
     // Start is called before the first frame update
     void Start()
     {
-        if (zombie.CompareTag("ZombieRed"))
+        if (gameObject.CompareTag("ZombieRed"))
         {
-            int zombieHealth = 4;
+            zombieHealth = 4;
         }
         else
         {
-            int zombieHealth = 2;
+            zombieHealth = 2;
         }
     }
 
@@ -25,7 +24,7 @@ public class ZombieHealth : MonoBehaviour
     {
         if (zombieHealth < 1)
         {
-
+            GameObject.Destroy(gameObject);
         }
     }
     public void TakeDamage()
