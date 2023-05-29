@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    Ray ray;
-    RaycastHit hit;
+
     Camera mainCamera;
     public float vertSensitivity;
-    float xRotation;
+    public float xRotation;
 
     // Start is called before the first frame update
     void Start()

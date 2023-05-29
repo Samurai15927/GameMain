@@ -7,7 +7,6 @@ public class ZombieSpawn : MonoBehaviour
     public float spawnRate = 4;
     public Vector3 spawnArea = new Vector3(5f, 5f, 5f);
     public int spawnCount = 2;
-    public int roundCount = 1;
     public GameObject[] _zombieType;
   
     // Start is called before the first frame update
@@ -35,7 +34,6 @@ public class ZombieSpawn : MonoBehaviour
     IEnumerator SpawnObject()
     { 
         yield return new WaitForSeconds(20f);
-        roundCount++;
         spawnCount += 2;
         SpawnZombies();
     }
