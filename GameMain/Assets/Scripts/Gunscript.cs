@@ -6,15 +6,19 @@ public class Gunscript : MonoBehaviour
 {
 
     // Update is called once per frame
-  
+    private CameraController cameracontroller;
     private bool isShooting = false;
-   
+    void Start()
+    {
+        cameracontroller = FindObjectOfType<CameraController>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             isShooting = true;
             StartCoroutine(ShootRepeatedly());
+          
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -51,7 +55,7 @@ public class Gunscript : MonoBehaviour
                 }
             }
         }
-       
+        cameracontroller.xRotation -= 1.5f;
 
     }
 

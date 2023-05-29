@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class LoginManager : MonoBehaviour
 {
     public InputField username;
@@ -56,6 +56,7 @@ public class LoginManager : MonoBehaviour
         else 
         {
             errorMessage.SetText("Username Accepted");
+            SceneManager.LoadScene(sceneName: "Game");
         }
     }
     
