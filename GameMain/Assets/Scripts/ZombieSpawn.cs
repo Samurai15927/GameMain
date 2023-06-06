@@ -8,6 +8,7 @@ public class ZombieSpawn : MonoBehaviour
     public Vector3 spawnArea = new Vector3(9f, 0f, 9f);
     public int spawnCount = 2;
     public GameObject[] _zombieType;
+    
 
     public Vector3 spawnPosition;
     private GameObject player;
@@ -58,4 +59,5 @@ public class ZombieSpawn : MonoBehaviour
         spawnCount += 2;
         SpawnZombies();
     }
+   
 }

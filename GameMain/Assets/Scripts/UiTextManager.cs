@@ -6,12 +6,15 @@ using TMPro;
 
 public class UiTextManager : MonoBehaviour
 {
-    public TMP_Text Score;
-    public ZombieHealth ZombieHealthUI;
+
+    public Text Health;
+    public PlayerController PlayerControllerUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(PlayerControllerUI.health);
+        PlayerControllerUI = GameObject.Find("Player").GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -19,8 +22,8 @@ public class UiTextManager : MonoBehaviour
     {
       
         
-        Debug.Log("WORKS");
-        Score.SetText("Score" +)
+    
+        Health.text = "HP" + PlayerControllerUI.health;
     
        
     }

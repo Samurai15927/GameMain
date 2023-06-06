@@ -6,7 +6,7 @@ public class ZombieHealth : MonoBehaviour
 
 {
     public int zombieHealth;
-    public int GameScore = 0;
+    public ZombieSpawn ZombieSpawnHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +25,9 @@ public class ZombieHealth : MonoBehaviour
     {
         if (zombieHealth < 1)
         {
-            GameScore += 10;
-            Debug.Log(GameScore);
+      
             GameObject.Destroy(gameObject);
-            
+
         }
     }
     public void TakeDamage()
@@ -37,3 +36,4 @@ public class ZombieHealth : MonoBehaviour
         Debug.Log("Zombie health: " + zombieHealth);
     }
 }
+   
