@@ -8,23 +8,19 @@ public class UiTextManager : MonoBehaviour
 {
 
     public Text Health;
-    public PlayerController PlayerControllerUI;
+    private PlayerController PlayerControllerUI;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerControllerUI.health);
+
         PlayerControllerUI = GameObject.Find("Player").GetComponent<PlayerController>();
+        Debug.Log(PlayerControllerUI.health);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        
-    
         Health.text = "HP" + PlayerControllerUI.health;
-    
-       
     }
 }

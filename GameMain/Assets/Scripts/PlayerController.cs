@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float sensitivity; // Sensitivity of the player rotation
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
-    public int health = 5;
+    public int health = 7;
 
     // Private variables
     private Rigidbody playerRb; // Rigidbody component of the player object

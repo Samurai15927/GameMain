@@ -49,7 +49,7 @@ public class ZombieSpawn : MonoBehaviour
             }
         }
 
-        Debug.Log(spawnPosition); // Output the spawn position for debugging
+    
         return spawnPosition;
     }
 
