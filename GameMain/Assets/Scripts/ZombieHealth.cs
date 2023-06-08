@@ -28,6 +28,7 @@ public class ZombieHealth : MonoBehaviour
       
             GameObject.Destroy(gameObject);
 
+
         }
     }
     public void TakeDamage()
