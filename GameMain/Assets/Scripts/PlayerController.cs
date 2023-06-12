@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     // Public variables
@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
             {
                 isDead = true;
                 UiTextManagerPC.HandleDeath();
+                StartCoroutine(SwitchScene());
             }
             else
             {
@@ -81,6 +82,11 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    IEnumerator SwitchScene()
+    {
+        yield return new WaitForSeconds(5f);
+      
+        SceneManager.LoadScene("Login Page");
+    }
 
 }

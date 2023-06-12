@@ -10,11 +10,12 @@ public class LoginManager : MonoBehaviour
     public Button loginButton;
     public TMP_Text errorMessage;
    
-
+   
 
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
@@ -56,10 +57,17 @@ public class LoginManager : MonoBehaviour
         else 
         {
             errorMessage.SetText("Username Accepted");
-            SceneManager.LoadScene(sceneName: "Game");
+            StartCoroutine(SwitchToGame());
         }
+        
     }
-    
+    IEnumerator SwitchToGame()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        SceneManager.LoadScene("Game");
+    }
 
-}  
+
+}
 
