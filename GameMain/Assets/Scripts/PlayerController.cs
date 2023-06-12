@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
     public int health;
-
+    private UiTextManager UiTextManagerPC;
+    private bool isDead = false;
     // Private variables
     private Rigidbody playerRb; // Rigidbody component of the player object
     private CapsuleCollider playerCollider; // CapsuleCollider component of the player object
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody and CapsuleCollider components of the player object
         playerRb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
+        UiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
             // Set isGrounded to false since the player is no longer touching the ground
             isGrounded = false;
         }
+        
        
     }
 
@@ -64,7 +67,20 @@ public class PlayerController : MonoBehaviour
 
     public void takeDamage()
     {
-        health--;
+        if (isDead == false)
+        {
+            if (health < 1)
+            {
+                isDead = true;
+                UiTextManagerPC.HandleDeath();
+            }
+            else
+            {
+                health--;
+            }
+        }
+
     }
+
 
 }
