@@ -30,6 +30,7 @@ public class ZombieSpawn : MonoBehaviour
         {
             Vector3 spawnPosition = ValidSpawnPosition();
             Instantiate(_zombieType[Random.Range(0, _zombieType.Length)], spawnPosition, Quaternion.identity);
+         
         }
         StartCoroutine(SpawnObject());
     }
