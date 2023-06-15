@@ -11,6 +11,7 @@ public class ZombieMovement : MonoBehaviour
     public float distance;
     private Animator animator;
     private PlayerController pc;
+    bool close;
     
     
 
@@ -43,7 +44,7 @@ public class ZombieMovement : MonoBehaviour
             Vector3 Rotation = transform.eulerAngles;
             Rotation.x = 0f;
             transform.eulerAngles = Rotation;
-
+            close = true;
             if (!isAttacking)
             {
                 StartCoroutine(Damage());
@@ -55,6 +56,7 @@ public class ZombieMovement : MonoBehaviour
             animator.SetBool("IsClose", false);
             Transform playerTransform = player.transform;
             transform.LookAt(playerTransform);
+            close = false;
             Vector3 Rotation = transform.eulerAngles;
             Rotation.x = 0f;
             transform.eulerAngles = Rotation;
@@ -67,9 +69,16 @@ public class ZombieMovement : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(2f);
-        pc.takeDamage();
-        Debug.Log(pc.health);
-        isAttacking = false;
+        if (close == true)
+        {
+            pc.takeDamage();
+            Debug.Log(pc.health);
+            isAttacking = false;
+        }
+        else
+        {
+            isAttacking = false;
+        }
     }
 
 }

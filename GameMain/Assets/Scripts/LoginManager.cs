@@ -4,76 +4,71 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public class LoginManager : MonoBehaviour
 {
-    public InputField username;
-    public Button loginButton;
-    public TMP_Text errorMessage;
-   
-   
+    public InputField username; // Input field for the username
+    public Button loginButton; // Button for login
+    public TMP_Text errorMessage; // Text field for error messages
 
     void Start()
     {
-        //Unlocks the cursor so player can type in there username. As cursor is locked in game and doesn't unlock without this code.
-        Cursor.lockState = CursorLockMode.None; 
+        // Unlocks the cursor so the player can type in their username. The cursor is locked in the game and doesn't unlock without this code.
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Method called when the Login button is clicked. This method will determine if the username is acceptable or not.
+    public void UsernameChecker()
     {
-        
-    }
-    //Method UsernameChecker is called. This method will determine if the username is acceptable or not.
-    public void UsernameChecker() 
-    {
-        int numCount = 0;
-        int charCount = username.text.Length;
-        int specCount = username.text.Length;
-        //Checks the Charactor count of the Username to determine if username is too long or short.
+        int numCount = 0; // Count of digits in the username
+        int charCount = username.text.Length; // Character count of the username
+        int specCount = username.text.Length; // Count of special characters in the username
+
+        // Checks the character count of the username to determine if it's too long or short.
         foreach (char c in username.text)
         {
-            //Checks if there are any digits in the username and assigns if there are to a variable numcount.
+            // Checks if there are any digits in the username and increments the numCount variable if found.
             if (char.IsDigit(c))
             {
                 numCount++;
-
             }
-            //Checks if there are any special charactors by getting total charactors and taking away all letters and digits. If he number left is greater
-            //than zero it means that there is a special character. I belive there is a better way to do this but this does work.
+
+            // Checks if there are any special characters by comparing the total characters and subtracting all letters and digits.
+            // If the remaining count is greater than zero, it means there is a special character.
             if (char.IsLetterOrDigit(c))
             {
                 specCount--;
             }
-
         }
-        //Detects if Charactor Count is too great and prints an error message if it is.
+
+        // Detects if the character count is too great and displays an error message if it is.
         if (charCount > 10 || charCount < 2)
         {
             errorMessage.SetText("The Name Must Have Between 2 And 10 Characters");
         }
+        // Checks if there are any digits in the username and displays an error message if found.
         else if (numCount > 0)
         {
             errorMessage.SetText("No Numbers Are Allowed");
         }
+        // Checks if there are any special characters in the username and displays an error message if found.
         else if (specCount > 0)
         {
             errorMessage.SetText("No Special Characters allowed");
         }
-        else 
+        // If all checks pass, it means the username is accepted and initiates a switch to the Game scene after a delay.
+        else
         {
             errorMessage.SetText("Username Accepted");
             StartCoroutine(SwitchToGame());
         }
-        
     }
+
+    // Coroutine for switching to the Game scene after a delay
     IEnumerator SwitchToGame()
     {
         yield return new WaitForSeconds(2f);
-        
         SceneManager.LoadScene("Game");
     }
-
-
 }
-
