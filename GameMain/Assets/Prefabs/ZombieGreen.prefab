@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  zombieSpeed: 1
+  zombieSpeed: 2
   zombie: {fileID: 4834718383207590214}
   distance: 0
 --- !u!114 &5753690544470840099
@@ -999,6 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieHealth: 0
+  ZombieSpawnHealth: {fileID: 0}
 --- !u!1 &5025998809369377448
 GameObject:
   m_ObjectHideFlags: 0

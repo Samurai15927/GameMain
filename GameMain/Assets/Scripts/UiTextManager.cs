@@ -26,7 +26,7 @@ public class UiTextManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Health.text = "HP" + PlayerControllerUI.health;
+        Health.text = "HP:" + PlayerControllerUI.health;
     }
     public void HandleDeath()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZombieSpawn : MonoBehaviour
 {
     public float spawnRate = 4; // Rate at which zombies spawn
-    public Vector3 spawnArea = new Vector3(9f, 0f, 9f); // Area where zombies can spawn
+    public Vector3 spawnArea = new Vector3(2f, 0f, 2f); // Area where zombies can spawn
     public int spawnCount = 2; // Number of zombies to spawn initially
     public GameObject[] _zombieType; // Array of zombie prefabs
 
@@ -55,8 +55,8 @@ public class ZombieSpawn : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
-        yield return new WaitForSeconds(20f); // Wait for a specified duration
-        spawnCount += 2; // Increase the number of zombies to spawn
+        yield return new WaitForSeconds(10f); // Wait for a specified duration
+        spawnCount += 4; // Increase the number of zombies to spawn
         SpawnZombies(); // Spawn additional zombies
     }
 }
