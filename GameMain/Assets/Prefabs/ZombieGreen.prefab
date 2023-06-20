@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  zombieSpeed: 2
+  zombieSpeed: 1.3
   zombie: {fileID: 4834718383207590214}
   distance: 0
 --- !u!114 &5753690544470840099

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZombieSpawn : MonoBehaviour
 {
     public float spawnRate = 4; // Rate at which zombies spawn
-    public Vector3 spawnArea = new Vector3(2f, 0f, 2f); // Area where zombies can spawn
+    Vector3 spawnArea = new Vector3(9f, 1f, 9f); // Area where zombies can spawn
     public int spawnCount = 2; // Number of zombies to spawn initially
     public GameObject[] _zombieType; // Array of zombie prefabs
 
