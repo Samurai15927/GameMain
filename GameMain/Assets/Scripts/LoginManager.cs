@@ -41,7 +41,7 @@ public class LoginManager : MonoBehaviour
                 specCount--;
             }
         }
-
+        
         // Detects if the character count is too great and displays an error message if it is.
         if (charCount > 10 || charCount < 2)
         {
@@ -56,6 +56,11 @@ public class LoginManager : MonoBehaviour
         else if (specCount > 0)
         {
             errorMessage.SetText("No Special Characters allowed");
+        }
+        else if (username.text.Contains("Briggs"))
+        {
+            errorMessage.SetText("Welcome Sir");
+            StartCoroutine(SwitchToGame());
         }
         // If all checks pass, it means the username is accepted and initiates a switch to the Game scene after a delay.
         else
