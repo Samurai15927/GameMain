@@ -7,11 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     // Public variables
     public float movementSpeed; // Speed of the player movement
-    public float sensitivity; // Sensitivity of the player rotation
+    public float sensitivity; // Sensitivity of the player 
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
-    public int health;
-    private UiTextManager UiTextManagerPC;
+    public int health;      //Health of the player
+    private UiTextManager UiTextManagerPC; //Allows to get variables from UITextManager
     private bool isDead = false;
     public float minX; // Minimum x-axis boundary
     public float minZ; // Minimum z-axis boundary
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb; // Rigidbody component of the player object
     private CapsuleCollider playerCollider; // CapsuleCollider component of the player object
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         // Get the Rigidbody and CapsuleCollider components of the player object
@@ -31,16 +31,18 @@ public class PlayerController : MonoBehaviour
         UiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+     
+
         // Get the horizontal and vertical input axes
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
 
         // Calculate the new position of the player object
         Vector3 newPosition = transform.position + (transform.forward * verticalInput + transform.right * horizontalInput) * movementSpeed * Time.deltaTime;
-
+        
         // Apply boundaries to the new position based on the minimum and maximum x and z values
         newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
         newPosition.z = Mathf.Clamp(newPosition.z, minZ, maxZ);
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
     // OnCollisionEnter is called when the player object collides with another object
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the other object has the "Terrain" tag and set isGrounded to true if it does
+        // Check if the terraub and player are in contact with each other before allowing jump again
         if (collision.gameObject.CompareTag("Terrain"))
         {
             isGrounded = true;
@@ -78,20 +80,24 @@ public class PlayerController : MonoBehaviour
 
     public void takeDamage()
     {
+        //Checks the player isnt dead before taking health to make HP not go below 0
         if (isDead == false)
         {
+            //Takes a health off the player
             health--;
             if (health < 1)
             {
+                //Starts the ending sequence as player is dead
                 isDead = true;
                 UiTextManagerPC.HandleDeath();
                 StartCoroutine(SwitchScene());
             }
         }
     }
-
+    //Starts corutine to switch scenes as game is over
     IEnumerator SwitchScene()
     {
+        //Waits 5 seconds before switching scenes
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("Login Page");
     }

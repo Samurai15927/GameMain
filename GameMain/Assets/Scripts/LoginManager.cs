@@ -57,6 +57,7 @@ public class LoginManager : MonoBehaviour
         {
             errorMessage.SetText("No Special Characters allowed");
         }
+        //Checks if username has Briggs in it and if so initates scene switch into the game.
         else if (username.text.Contains("Briggs"))
         {
             errorMessage.SetText("Welcome Sir");
@@ -73,6 +74,7 @@ public class LoginManager : MonoBehaviour
     // Coroutine for switching to the Game scene after a delay
     IEnumerator SwitchToGame()
     {
+        //Waits 2 seconds before entering game
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Game");
     }
