@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//PlayerController script takes the users movement inputs and moves the character depending on the input. It also sets a boundry for the player
+//Has methods to take damage for the player and check if the player is touching the ground before jumping.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +13,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
     public int health;      //Health of the player
-    private UiTextManager UiTextManagerPC; //Allows to get variables from UITextManager
-    private bool isDead = false;
+    private UiTextManager uiTextManagerPC; //Allows to get variables from UITextManager
+    private bool isDead = false; //If player is dead
     public float minX; // Minimum x-axis boundary
     public float minZ; // Minimum z-axis boundary
     public float maxX; // Maximum x-axis boundary
@@ -28,14 +30,12 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody and CapsuleCollider components of the player object
         playerRb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
-        UiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
+        uiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
     }
 
     
     void Update()
     {
-     
-
         // Get the horizontal and vertical input axes
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
-
-    public void takeDamage()
+    //Method takes damage for the player. When the player dies it then starts to switch scenes as game has ended.
+    public void TakeDamage()
     {
         //Checks the player isnt dead before taking health to make HP not go below 0
         if (isDead == false)
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Starts the ending sequence as player is dead
                 isDead = true;
-                UiTextManagerPC.HandleDeath();
+                uiTextManagerPC.HandleDeath();
                 StartCoroutine(SwitchScene());
             }
         }

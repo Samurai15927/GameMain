@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿//The ZombieSpawn script spawns the zombies into the game. It does this by selecting a random location for the zombies to spawn and then spawning them through a for loop.
+//The script also makes sure the zombie is not too close to the player through a while loop in a method. It also uses a array to randomly spawn either a red or green zombie.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieSpawn : MonoBehaviour
 {
     public float spawnRate = 4; // Rate at which zombies spawn
-    Vector3 spawnArea = new Vector3(9f, -0.9f, 9f); // Area where zombies can spawn
+    private Vector3 spawnArea = new Vector3(9f, -0.9f, 9f); // Area where zombies can spawn
     public int spawnCount = 2; // Number of zombies to spawn initially
     public GameObject[] _zombieType; // Array of zombie prefabs
-
     public Vector3 spawnPosition; // Position where a zombie will spawn
     private GameObject player; // Reference to the player GameObject
 

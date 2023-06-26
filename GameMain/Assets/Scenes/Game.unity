@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathText: {fileID: 558263916}
-  Health: {fileID: 603195246}
+  healthText: {fileID: 603195246}
 --- !u!4 &118306195
 Transform:
   m_ObjectHideFlags: 0

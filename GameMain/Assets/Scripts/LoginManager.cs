@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿//This script is the login manager. It takes the players login input and checks it for numbers special characters and other things.
+//If the username is found to be valid it switches scenes. And displays a error message if found to be invalid.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +30,7 @@ public class LoginManager : MonoBehaviour
         // Checks the character count of the username to determine if it's too long or short.
         foreach (char c in username.text)
         {
-            // Checks if there are any digits in the username and increments the numCount variable if found.
+            // Checks if there are any digits in the username and adds to the numCount variable if found.
             if (char.IsDigit(c))
             {
                 numCount++;

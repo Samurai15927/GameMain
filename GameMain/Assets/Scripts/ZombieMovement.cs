@@ -71,7 +71,7 @@ public class ZombieMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
         if (close == true)
         {
-            pc.takeDamage();
+            pc.TakeDamage();
             Debug.Log(pc.health);
             isAttacking = false;
         }
