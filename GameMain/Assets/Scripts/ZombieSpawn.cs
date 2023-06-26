@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//This script is the zombie spawner. It starts spawning zombies at the start of the game and keeps adding zombies every wave. It uses a while loop to get a random location for the zombies to spawn.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,9 +35,10 @@ public class ZombieSpawn : MonoBehaviour
     {
         bool validPosition = false; //Sets valid position to false until a valid position is found
         float playerRadius = 4f; // Radius around the player where zombies should not spawn
-
+        //While loop to get a valid spawn position away from the player.
         while (!validPosition)
         {
+            //gets a spawn position for the zombie
             spawnPosition = transform.position + new Vector3(Random.Range(-spawnArea.x, spawnArea.x), spawnArea.y, Random.Range(-spawnArea.z, spawnArea.z));
 
             // Check if the spawn position is far enough from the player
@@ -46,7 +48,7 @@ public class ZombieSpawn : MonoBehaviour
                 validPosition = true;
             }
         }
-
+        //returns a valid spawn position
         return spawnPosition;
     }
     //Corutine that waits 10 seconds between zombie spawn cycles and adds zombies to each round

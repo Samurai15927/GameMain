@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//This is the login manager this script take what the user puts in for there username and checks if it is a valid username. It then switches scene to the game.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class LoginManager : MonoBehaviour
     public Button loginButton; // Button for login
     public TMP_Text errorMessage; // Text field for error messages
 
+    //start is called before the first frame updates. In start the cursor is unlocked. 
     void Start()
     {
         // Unlocks the cursor so the player can type in their username. The cursor is locked in the game and doesn't unlock without this code.

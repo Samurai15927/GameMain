@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//This script is the player controller. It handles movement of the player and also the health of the player. This script also adds boundrys for the player.
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,8 +12,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight; // Height of the player jump
     public bool isGrounded; // Whether or not the player is touching the ground
     public int health;      //Health of the player
-    private UiTextManager UiTextManagerPC; //Allows to get variables from UITextManager
-    private bool isDead = false;
+    private UiTextManager uiTextManagerPC; //Allows to get variables from UITextManager
+    private bool isDead = false; //If the player is dead or alive
     public float minX; // Minimum x-axis boundary
     public float minZ; // Minimum z-axis boundary
     public float maxX; // Maximum x-axis boundary
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody and CapsuleCollider components of the player object
         playerRb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
-        UiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
+        uiTextManagerPC = GameObject.Find("Ui Text").GetComponent<UiTextManager>();
     }
 
     
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void takeDamage()
+    public void TakeDamage()
     {
         //Checks the player isnt dead before taking health to make HP not go below 0
         if (isDead == false)
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
             {
                 //Starts the ending sequence as player is dead
                 isDead = true;
-                UiTextManagerPC.HandleDeath();
+                uiTextManagerPC.HandleDeath();
                 StartCoroutine(SwitchScene());
             }
         }
